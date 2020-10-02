@@ -29,5 +29,7 @@ namespace FunitureExample.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        
     }
 }

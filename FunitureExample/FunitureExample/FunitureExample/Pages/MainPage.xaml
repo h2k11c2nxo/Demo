@@ -6,7 +6,7 @@
                       xmlns:page="clr-namespace:FunitureExample.Pages"
                       xmlns:viewModel="clr-namespace:FunitureExample.ViewModels"
                        xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                          xmlns:shadows="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+                          xmlns:renderers="clr-namespace:FunitureExample.Renderer"
                       >
 
     <ScrollView >
@@ -31,11 +31,35 @@
 
                 </StackLayout>
 
-                <StackLayout HorizontalOptions="FillAndExpand"  >
-                    <SearchBar HeightRequest="50">
+                <Frame HasShadow="True" Margin="0,10" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" >
+                        <Image
+                            HeightRequest="20"
+                            WidthRequest="20" 
+                            Margin="20,0" 
+                            Source="search.png">
 
-                    </SearchBar>
-                </StackLayout>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Search">
+                                    
+                                </TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <renderers:CustomEntry x:Name="textSearch"  Placeholder="Search" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                        <Image  HeightRequest="20" 
+                                WidthRequest="20" 
+                                Margin="20,0" 
+                                Source="close.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Close">
+                                    
+                                </TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        
+                    </StackLayout>
+                     
+                </Frame>
                 <!--<Image
                     VerticalOptions="Start"
                     Margin="60,0,0,0"
@@ -96,10 +120,11 @@
                                             Spacing="0"
                                             VerticalOptions="Center">
                                         <Label
+                                            x:Name="ColorCate"
                                                 FontFamily="FontMontserratMedium"
                                                 FontSize="16"
                                                 Text="{Binding Name}"
-                                                
+                                                TextColor="Black"
                                                 VerticalOptions="Start" />
                                         <Label
                                                 FontSize="9"

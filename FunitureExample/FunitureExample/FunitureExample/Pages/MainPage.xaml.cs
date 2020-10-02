@@ -1,4 +1,5 @@
-﻿using Android.Webkit;
+﻿using Android.Telecom;
+using Android.Webkit;
 using FunitureExample.Data;
 using FunitureExample.Models;
 using FunitureExample.ViewModels;
@@ -35,38 +36,15 @@ namespace FunitureExample.Pages
 
         }
 
-        //private void Button_Clicked(object sender, EventArgs e)
-        //{
-        //     Navigation.PushAsync(new DetailPage(product));
-        //}
+        private void TapGestureRecognizer_Close(object sender, EventArgs e)
+        {
 
-        //private void OpenMenu()
-        //{
-        //    MenuGrid.IsVisible = true;
-
-        //    Action<double> callback = input => MenuView.TranslationX = input;
-        //    MenuView.Animate("anim", callback, -260, 0, 16, 300, Easing.CubicInOut);
-        //}
-
-        //private void CloseMenu()
-        //{
-        //    Action<double> callback = input => MenuView.TranslationX = input;
-        //    MenuView.Animate("anim", callback, 0, -260, 16, 300, Easing.CubicInOut);
-
-        //    MenuGrid.IsVisible = false;
-        //}
-
-
-        //private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
-        //{
-        //    OpenMenu();
-        //}
-
-        //private void OverlayTapped(object sender, EventArgs e)
-        //{
-        //    CloseMenu();
-        //}
-
-
+            textSearch.Text = string.Empty;
+        }
+        private void TapGestureRecognizer_Search(object sender, EventArgs e)
+        {
+            textSearch.Focus();
+        }
+        
     }
 }

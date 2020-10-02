@@ -9,31 +9,22 @@
            >
     <StackLayout Background="White">
 
-        <StackLayout  BackgroundColor="#27282A" Orientation="Horizontal" HeightRequest="80">
-
-            <Image Grid.Column="0"
-                Source="close4.png"
+        <StackLayout  BackgroundColor="White" Orientation="Horizontal" HeightRequest="80">
+           
+                <Image Grid.Column="0"
+                Source="close.png"
                    HorizontalOptions="StartAndExpand"
-                   WidthRequest="25"
-                   HeightRequest="25"
+                   WidthRequest="30"
+                   HeightRequest="30"
                    VerticalOptions="End"
                    Margin="15,0,0,15"
                    BackgroundColor="Transparent"
                    >
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding PopDetailPageCommand}" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Grid.Column="1"
-                Source="hearwhite.png"
-                   HorizontalOptions="EndAndExpand"
-                   WidthRequest="25"
-                   HeightRequest="25"
-                      VerticalOptions="End"
-                    Margin="0,0,15,15"
-                   BackgroundColor="Transparent"
-                   >
-            </Image>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PopDetailPageCommand}" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            
         </StackLayout>
 
         <pancake:PancakeView

@@ -33,7 +33,7 @@
                 CornerRadius="20,20,0,0"
                 HasShadow="False"
                >
-            <StackLayout>
+            <StackLayout BackgroundColor="Transparent">
                 <Image Source="{Binding Product.Image}"
                                    HorizontalOptions="Center"
                                    WidthRequest="250"
@@ -70,7 +70,7 @@
                         FontSize="20" 
                         HorizontalOptions="Start"
                         ></Label>
-                    <Label Text="{Binding Product.NewPrice,StringFormat='$ {0:N0}'}}" FontAttributes="Bold" TextColor="#EE6F6C" HorizontalOptions="EndAndExpand"></Label>
+                    <Label Text="{Binding Product.NewPrice,StringFormat='$ {0:N0}'}" FontAttributes="Bold" TextColor="#EE6F6C" HorizontalOptions="EndAndExpand"></Label>
                 </StackLayout>
                 <StackLayout Margin="20,-25,20,20">
                     <Label 

@@ -10,166 +10,128 @@
                       >
 
     <ScrollView >
-        <StackLayout Margin="20" >
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="70" >
-                <StackLayout Margin="20"  >
-                    <BoxView
+            <StackLayout Margin="20" >
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="70"  >
+                    <StackLayout Margin="20"  x:Name="MainMenuView"   >
+                        <BoxView
                         BackgroundColor="Black"
                         CornerRadius="3"
                         HeightRequest="3"
                         HorizontalOptions="Start"
                         WidthRequest="25" 
-                VerticalOptions="Start"/>
-                    <BoxView
+                        VerticalOptions="Start"
+                            />
+                        <BoxView
                         BackgroundColor="Black"
                         CornerRadius="3"
                         HeightRequest="3"
                         HorizontalOptions="Start"
                         WidthRequest="25"
-                VerticalOptions="Start"/>
+                        VerticalOptions="Start"
+                            />
 
-                </StackLayout>
+                    </StackLayout>
+             
 
-                <Frame HasShadow="True" Margin="0,10" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
-                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" >
-                        <Image
+                    <Frame HasShadow="True" Margin="0,10" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand" BorderColor="Black">
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" >
+                            <Image
                             HeightRequest="20"
                             WidthRequest="20" 
                             Margin="20,0" 
                             Source="search.png">
 
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Search">
-                                    
-                                </TapGestureRecognizer>
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <renderers:CustomEntry x:Name="textSearch"  Placeholder="Search" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                        <Image  HeightRequest="20" 
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Search">
+
+                                    </TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <renderers:CustomEntry x:Name="textSearch"  Placeholder="Search" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                            <Image  HeightRequest="20" 
                                 WidthRequest="20" 
                                 Margin="20,0" 
                                 Source="close.png">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Close">
-                                    
-                                </TapGestureRecognizer>
-                            </Image.GestureRecognizers>
-                        </Image>
-                        
-                    </StackLayout>
-                     
-                </Frame>
-                <!--<Image
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Close">
+
+                                    </TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                        </StackLayout>
+
+                    </Frame>
+                    <!--<Image
                     VerticalOptions="Start"
                     Margin="60,0,0,0"
                     Aspect="AspectFit"
                     HeightRequest="22"
                     Source="cart"
                     WidthRequest="22" />-->
-            </StackLayout>
+                </StackLayout>
 
-            <StackLayout Orientation="Vertical"  >
-                <Label Text="Explore" FontSize="30" FontAttributes="Bold" TextColor="Black" ></Label>
-                <Label Text="category" ></Label>
-            </StackLayout>
+                <StackLayout Orientation="Vertical"  >
+                    <Label Text="Explore" FontSize="30" FontAttributes="Bold" TextColor="Black" ></Label>
+                    <Label Text="category" ></Label>
+                </StackLayout>
 
-            <CollectionView
+                <CollectionView
                 x:Name="listCategories"
                             ItemsSource="{Binding Categories}"
                             HorizontalScrollBarVisibility="Never"
                 HeightRequest="100"
                 SelectionMode="None"
                 >
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="5" Orientation="Horizontal" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <pancake:PancakeView
-                                Margin="0,5,5,5"
-                                    Padding="8"
-                                    BackgroundColor="{Binding BackgroundColorCate}"
-                                    CornerRadius="34"
-                                    HeightRequest="50"
-                                    VerticalOptions="Start"
-                                    WidthRequest="135"
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="5" Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                            <page:ListCategory
                                 >
-                                <Grid
-                                        RowSpacing="0"
-                                        VerticalOptions="Center">
-
-
-                                    <BoxView
-                                            BackgroundColor="White"
-                                            CornerRadius="25"
-                                            HeightRequest="50"
-                                            WidthRequest="50" />
-                                    <Image
-                                            Grid.Column="0"
-                                            HeightRequest="34"
-                                            HorizontalOptions="Center"
-                                            Source="{Binding Image}"
-                                            VerticalOptions="CenterAndExpand"
-                                            WidthRequest="34" />
-                                    <StackLayout
-                                            Grid.Row="0"
-                                            Grid.Column="1"
-                                            Margin="2,0,0,0"
-                                            Spacing="0"
-                                            VerticalOptions="Center">
-                                        <Label
-                                            x:Name="ColorCate"
-                                                FontFamily="FontMontserratMedium"
-                                                FontSize="16"
-                                                Text="{Binding Name}"
-                                                TextColor="Black"
-                                                VerticalOptions="Start" />
-                                        <Label
-                                                FontSize="9"
-                                                Text="{Binding Quantity, StringFormat='{0} items'}"
-                                                VerticalOptions="Start" />
-                                    </StackLayout>
-                                </Grid>
-                                <pancake:PancakeView.GestureRecognizers>
+                                <page:ListCategory.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Command="{Binding Path=BindingContext.SelectCategoryCommand , Source={x:Reference listCategories}}"
                                         CommandParameter="{Binding .}"
                                         NumberOfTapsRequired="1" 
-                                        />
-                                </pancake:PancakeView.GestureRecognizers>
-                            </pancake:PancakeView>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                     >
+                                    </TapGestureRecognizer>
+                                </page:ListCategory.GestureRecognizers>
+                            </page:ListCategory>
+                                
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
 
 
-            <Frame 
+                <Frame 
        CornerRadius="10"
        HasShadow="True"
                     HeightRequest="150"
                    BackgroundColor="#27282A"
                      
               >
-                <StackLayout   Orientation="Horizontal" HeightRequest="100"    >
-                    <StackLayout WidthRequest="300"  HeightRequest="50"  >
-                        <Label Text="Black Friday" TextColor="Gray"></Label>
-                        <Label LineBreakMode="WordWrap" FontAttributes="Bold">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="Sale Up to " TextColor="White" FontSize="20" >
-                                    </Span>
-                                    <Span Text="70% " TextColor="Yellow"  FontSize="20" >
-                                    </Span>
-                                    <Span Text="Off" TextColor="White"  FontSize="20" >
-                                    </Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Button 
+                    <StackLayout   Orientation="Horizontal" HeightRequest="100"    >
+                        <StackLayout WidthRequest="300"  HeightRequest="50"  >
+                            <Label Text="Black Friday" TextColor="Gray"></Label>
+                            <Label LineBreakMode="WordWrap" FontAttributes="Bold">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                    <Span Text="Sale Up to " TextColor="White" FontSize="20" FontFamily="{StaticResource ShadowsIntoLight}" >
+                                        </Span>
+                                    <Span Text="70% " TextColor="Yellow"  FontSize="20" FontFamily="{StaticResource ShadowsIntoLight}" >
+                                        </Span>
+                                    <Span Text="Off" TextColor="White"  FontSize="20" FontFamily="{StaticResource ShadowsIntoLight}" >
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Button 
                             Text="Shop Now"
                             BackgroundColor="White"  
                             TextColor="Gray"
@@ -178,42 +140,42 @@
                             VerticalOptions="StartAndExpand" 
                           
                             ></Button>
-                    </StackLayout>
-                    
-                    <AbsoluteLayout>
+                        </StackLayout>
 
-                        <CarouselView ItemsSource="{Binding Products}" x:Name="CarouseViewImage" IndicatorView="indicatorView">
-                            <CarouselView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout>
-                                        <Image x:Name="ImageCarousel" Source="{Binding Image}" 
+                        <AbsoluteLayout>
+
+                            <CarouselView ItemsSource="{Binding Products}" x:Name="CarouseViewImage" IndicatorView="indicatorView">
+                                <CarouselView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout>
+                                            <Image x:Name="ImageCarousel" Source="{Binding Image}" 
                                    Aspect="AspectFill"
                                    HeightRequest="150"
                                    WidthRequest="150"
                                    HorizontalOptions="Center" />
-                                    </StackLayout>
-                                </DataTemplate>
-                            </CarouselView.ItemTemplate>
-                        </CarouselView>
-                        <IndicatorView x:Name="indicatorView"
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CarouselView.ItemTemplate>
+                            </CarouselView>
+                            <IndicatorView x:Name="indicatorView"
                    IndicatorColor="LightGray"
                    SelectedIndicatorColor="DarkGray"
                    HorizontalOptions="Center"
                                        AbsoluteLayout.LayoutFlags="All"
                            AbsoluteLayout.LayoutBounds="1,0.95,1.85,0.1"
                                       />
-                    </AbsoluteLayout>
+                        </AbsoluteLayout>
+                    </StackLayout>
+
+                </Frame>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label HorizontalOptions="Start" Text="Best Seller" TextColor="Black" FontAttributes="Bold"></Label>
+                    <Label Text="Show All" TextColor="Red" HorizontalOptions="EndAndExpand"></Label>
                 </StackLayout>
 
-            </Frame>
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                <Label HorizontalOptions="Start" Text="Best Seller" TextColor="Black" FontAttributes="Bold"></Label>
-                <Label Text="Show All" TextColor="Red" HorizontalOptions="EndAndExpand"></Label>
-            </StackLayout>
-
-            <StackLayout >
-                <CollectionView 
+                <StackLayout >
+                    <CollectionView 
                 x:Name="listProducts"
                             ItemsSource="{Binding Products}"
                             VerticalScrollBarVisibility="Never"
@@ -221,23 +183,23 @@
                 VerticalOptions="FillAndExpand"
                     HeightRequest="850"
                             >
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout HorizontalItemSpacing="15"
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout HorizontalItemSpacing="15"
                         Orientation="Vertical"
                         Span="2"
                         VerticalItemSpacing="15"  />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <pancake:PancakeView
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <pancake:PancakeView
                                 Padding="0,0,0,10"
                                 BackgroundColor="AliceBlue"
                                 CornerRadius="12"
                                 HasShadow="False">
-                                    <StackLayout >
-                                        <StackLayout Orientation="Horizontal">
-                                            <pancake:PancakeView
+                                        <StackLayout >
+                                            <StackLayout Orientation="Horizontal">
+                                                <pancake:PancakeView
                                         Padding="2,4"
                                         BackgroundColor="Red"
                                         CornerRadius="12,0,0,20"
@@ -246,126 +208,131 @@
                                         HorizontalOptions="Start"
                                         VerticalOptions="Start"
                                         WidthRequest="30">
-                                                <Label HorizontalOptions="Center">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span
+                                                    <Label HorizontalOptions="Center">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span
                                                         FontSize="8"
                                                         Text="{Binding Discount, StringFormat='{0:N0}%'}"
                                                         TextColor="White" />
-                                                            <Span
+                                                                <Span
                                                         FontSize="8"
                                                         Text="&#10;OFF"
                                                         TextColor="White" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <pancake:PancakeView.Triggers>
-                                                    <DataTrigger
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <pancake:PancakeView.Triggers>
+                                                        <DataTrigger
                                                 Binding="{Binding Discount}"
                                                 TargetType="pancake:PancakeView"
                                                 Value="0">
-                                                        <Setter Property="IsVisible" Value="False" />
-                                                    </DataTrigger>
-                                                </pancake:PancakeView.Triggers>
-                                            </pancake:PancakeView>
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </DataTrigger>
+                                                    </pancake:PancakeView.Triggers>
+                                                </pancake:PancakeView>
 
-                                            <Image
+                                                <Image
                                         Aspect="AspectFit"
                                         HeightRequest="25"
                                         HorizontalOptions="EndAndExpand"
                                         Source="heart.png"
                                         VerticalOptions="End"
                                         WidthRequest="18">
-                                                <Image.Triggers>
-                                                    <DataTrigger
+                                                    <Image.Triggers>
+                                                        <DataTrigger
                                                 Binding="{Binding Favorite}"
                                                 TargetType="Image"
                                                 Value="True">
-                                                        <Setter Property="Source" Value="heart" />
-                                                    </DataTrigger>
-                                                </Image.Triggers>
-                                            </Image>
+                                                            <Setter Property="Source" Value="heart" />
+                                                        </DataTrigger>
+                                                    </Image.Triggers>
+                                                </Image>
 
-                                        </StackLayout>
-                                        <Image
+                                            </StackLayout>
+                                            <Image
                                         Margin="0,25,0,0"
                                         Aspect="AspectFit"
                                         HeightRequest="100"
                                         Source="{Binding Image}" />
-                                        <Label
+                                            <Label
                                         Margin="10,0"
                                         FontAttributes="Bold"
                                         FontSize="16"
                                         HorizontalTextAlignment="Center"
                                         LineBreakMode="TailTruncation"
                                         Text="{Binding Name}" 
-                                        TextColor="Black"/>
-                                        <StackLayout
+                                        TextColor="Black"
+                                                FontFamily="{StaticResource Monteserrat}"/>
+                                            <StackLayout
                                         HorizontalOptions="Center"
                                         Orientation="Horizontal"
                                         Spacing="2">
-                                            <Image
+                                                <Image
                                             Aspect="AspectFit"
                                             HeightRequest="8"
                                             HorizontalOptions="Start"
                                             Source="star.png"
                                             WidthRequest="8" />
-                                            <Label
-                                            FontSize="8"
+                                                <Label
+                                            FontSize="10"
                                             Text="{Binding Rating, StringFormat='{0:N1}  |'}"
-                                            TextColor="Gray"
-                                            VerticalTextAlignment="Center" />
-                                            <Label
-                                            FontSize="8"
+                                            TextColor="Red"
+                                                    FontAttributes="Bold"
+                                            VerticalTextAlignment="Center" 
+                                                    FontFamily="{StaticResource ShadowsIntoLight}"/>
+                                                <Label
+                                            FontSize="10"
                                             Text="{Binding Review, StringFormat=' {0} Review'}"
-                                            TextColor="Gray"
-                                            VerticalTextAlignment="Center" />
-                                        </StackLayout>
-                                        <BoxView
+                                            TextColor="Black"
+                                            VerticalTextAlignment="Center"
+                                                    FontFamily="{StaticResource ShadowsIntoLight}"
+                                                    FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <BoxView
                                         Margin="0,10,0,5"
                                         BackgroundColor="Gray"
                                         HeightRequest="1"
                                         HorizontalOptions="FillAndExpand" />
-                                        <StackLayout
+                                            <StackLayout
                                         HorizontalOptions="Center"
                                         Orientation="Horizontal">
-                                            <Label
+                                                <Label
                                             FontSize="10"
                                             Text="{Binding OldPrice, StringFormat='{0:G}'}"
                                             TextColor="Gray"
                                             TextDecorations="Strikethrough"
                                             VerticalTextAlignment="Center">
-                                                <Label.Triggers>
-                                                    <DataTrigger
+                                                    <Label.Triggers>
+                                                        <DataTrigger
                                                     Binding="{Binding OldPrice}"
                                                     TargetType="Label"
                                                     Value="0">
-                                                        <Setter Property="IsVisible" Value="False" />
-                                                    </DataTrigger>
-                                                </Label.Triggers>
-                                            </Label>
-                                            <Label
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                                <Label
                                             FontFamily="FontMontserratMedium"
                                             FontSize="16"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding NewPrice, StringFormat='${0:G}'}"
                                             TextColor="Red"
                                             VerticalTextAlignment="Center" />
+                                            </StackLayout>
                                         </StackLayout>
-                                    </StackLayout>
-                                    <pancake:PancakeView.GestureRecognizers>
-                                        <TapGestureRecognizer
+                                        <pancake:PancakeView.GestureRecognizers>
+                                            <TapGestureRecognizer
                                         Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference listProducts}}"
                                         CommandParameter="{Binding .}"
                                         NumberOfTapsRequired="1" />
-                                    </pancake:PancakeView.GestureRecognizers>
-                                </pancake:PancakeView>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                        </pancake:PancakeView.GestureRecognizers>
+                                    </pancake:PancakeView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
     </ScrollView>
 </page:BaseContentPage>

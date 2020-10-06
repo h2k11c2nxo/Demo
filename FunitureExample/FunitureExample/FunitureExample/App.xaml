@@ -4,5 +4,21 @@
              x:Class="FunitureExample.App">
     <Application.Resources>
         <Color x:Key="colorGray6F">#FB881C</Color>
+
+        <OnPlatform x:Key="Monteserrat"
+                    x:TypeArguments="x:String"
+                    >
+            <On Platform="Android" Value="Montserrat-SemiBoldItalic.ttf#Montserrat Monteserrat"></On>
+
+        </OnPlatform>
+        <OnPlatform x:Key="ShadowsIntoLight"
+                    x:TypeArguments="x:String"
+                    >
+            <On Platform="Android" Value="ShadowsIntoLight-Regular.ttf#ShadowsIntoLight ShadowsIntoLight"></On>
+
+        </OnPlatform>
+        
     </Application.Resources>
+    
+    
 </Application>

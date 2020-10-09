@@ -1,6 +1,4 @@
-﻿using FunitureExample.Models;
-using FunitureExample.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace FunitureExample.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailPage : BaseContentPage<DetailViewModel>
+    public partial class MainViewPage : Xamarin.Forms.TabbedPage
     {
-        public DetailPage( Product product)
+        public MainViewPage()
         {
             InitializeComponent();
-            ViewModel.Product = product;
-
-        }
+            NavigationPage.SetHasNavigationBar(this, false);
+        }   
     }
 }

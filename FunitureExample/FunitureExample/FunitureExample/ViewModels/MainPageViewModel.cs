@@ -28,6 +28,8 @@ namespace FunitureExample.ViewModels
         public ObservableCollection<Category> Categories { get; set; }
         public ObservableCollection<Product> Products { get; set; }
         public ObservableCollection<MenuTitle> Menus { get; set; }
+        public Command SelectCategoryCommand { get; }
+        public double ProductListHeight => (Products.Count + 1) / 2 * 285;
 
         public MainPageViewModel()
         {
@@ -43,7 +45,7 @@ namespace FunitureExample.ViewModels
             GetMenu();
             NavigateToDetailPageCommand = new Command<Product>(async (product) => await ExeccuteNavigateToDetailPageCommand(product));
         }
-        public Command SelectCategoryCommand { get;}
+        
         void GetMenu()
         {
             Menus = new ObservableCollection<MenuTitle>(GetData.GetMenus());
@@ -58,6 +60,7 @@ namespace FunitureExample.ViewModels
         {
             Products = new ObservableCollection<Product>(GetData.GetProducts());
         }
+
         void AddCategory()
         {
             Category category = new Category();
@@ -65,6 +68,7 @@ namespace FunitureExample.ViewModels
             category.Quantity = Quantity;
             Categories.Add(category);
         }
+
         private void ExecuteSelectGroupCommand(Category category)
         {
             var index = Categories.ToList().FindIndex(p => p.Name == category.Name);

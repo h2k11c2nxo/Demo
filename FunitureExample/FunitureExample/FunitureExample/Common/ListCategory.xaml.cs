@@ -31,11 +31,13 @@ namespace FunitureExample.Pages
           Color.White,
           BindingMode.TwoWay
           );
+
         public Color BackgroundContainer
         {
             get => (Color)GetValue(BackgroundContainerProperty);
             set { SetValue(BackgroundContainerProperty, value); }
         }
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
@@ -43,10 +45,8 @@ namespace FunitureExample.Pages
             {
                 container.BackgroundColor = BackgroundContainer;
             }
-           
 
         }
-
 
         private void ExecuteSelectGroupCommand(Category category)
         {

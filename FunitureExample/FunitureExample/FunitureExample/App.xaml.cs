@@ -10,7 +10,6 @@ namespace FunitureExample
         public App()
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new Pages.MainPage());
         }
 

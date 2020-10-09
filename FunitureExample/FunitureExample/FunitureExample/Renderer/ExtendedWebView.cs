@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace FunitureExample.Renderer
 {
-    public class CustomEntry :Entry
+    public class ExtendedWebView :WebView
     {
     }
 }

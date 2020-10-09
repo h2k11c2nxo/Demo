@@ -12,13 +12,15 @@ namespace FunitureExample.ViewModels
     [Android.Runtime.Preserve]
     public class DetailViewModel : BaseViewModel
     {
+        public Product Product { get; set; }
+        public Command PopDetailPageCommand { get; set; }
+
 
         public DetailViewModel()
         {
             PopDetailPageCommand = new Command(async () => await ProductDetail());
         }
-        public Product Product { get; set; }
-        public Command PopDetailPageCommand { get; set; }
+        
         async Task ProductDetail()
         {
             await App.Current.MainPage.Navigation.PopAsync();

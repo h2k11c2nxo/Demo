@@ -7,6 +7,10 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Gms.Common;
+using Firebase;
+using Firebase.Iid;
+using Firebase.Messaging;
+using Android.Util;
 
 namespace FunitureExample.Droid
 {
@@ -18,31 +22,7 @@ namespace FunitureExample.Droid
         internal static readonly string CHANNEL_ID = "my_notification_channel";
         internal static readonly int NOTIFICATION_ID = 100;
 
-        TextView msgText;
-
-        public bool IsPlayServicesAvailable()
-        {
-            int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
-            if (resultCode != ConnectionResult.Success)
-            {
-                if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
-                    msgText.Text = GoogleApiAvailability.Instance.GetErrorString(resultCode);
-                else
-                {
-                    msgText.Text = "This device is not supported";
-                    Finish();
-                }
-                return false;
-            }
-            else
-            {
-                msgText.Text = "Google Play Services is available.";
-                return true;
-            }
-        }
-
-
-     
+        [Obsolete]
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -52,10 +32,13 @@ namespace FunitureExample.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
             LoadApplication(new App());
+
+            var refreshedToken = FirebaseInstanceId.Instance.Token;
+            System.Diagnostics.Debug.WriteLine($"FCM Token: {refreshedToken}");
             IsPlayServicesAvailable();
 
-            msgText = FindViewById<TextView>(Resource.Id.text);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -64,6 +47,32 @@ namespace FunitureExample.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        
+        public bool IsPlayServicesAvailable()
+        {
+            int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
+            if (resultCode != ConnectionResult.Success)
+            {
+
+                if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
+                {
+                    //msgText.Text = GoogleApiAvailability.Instance.GetErrorString(resultCode);
+                }
+
+                else
+                {
+                    // msgText.Text = "This device is not supported";
+                    Finish();
+                }
+                return false;
+            }
+            else
+            {
+                // do whatever if play service is not available
+                //msgText.Text = "Google Play Services is available.";
+                return true;
+            }
+        }
+
+
     }
 }

@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "974539451314",
-    "firebase_url": "https://xamarinfuniture.firebaseio.com",
-    "project_id": "xamarinfuniture",
-    "storage_bucket": "xamarinfuniture.appspot.com"
+    "project_number": "1053215654359",
+    "firebase_url": "https://funitureapp-1bd13.firebaseio.com",
+    "project_id": "funitureapp-1bd13",
+    "storage_bucket": "funitureapp-1bd13.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:974539451314:android:8ce5b00680882f397652ab",
+        "mobilesdk_app_id": "1:1053215654359:android:8fcb6f1c2fe04db1d14b92",
         "android_client_info": {
-          "package_name": "com.xamarin.FunitureExample"
+          "package_name": "com.companyname.funitureexample"
         }
       },
       "oauth_client": [
         {
-          "client_id": "974539451314-jp0tqscemhsvosnfu2sendbifgevv4dp.apps.googleusercontent.com",
+          "client_id": "1053215654359-o6q3ugigph85357rjrrjo2ntfk6j6bgt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBfoUH02ABC9mDomKesOoLgYVfZlUNsB4I"
+          "current_key": "AIzaSyCPMy7zzWGOL1oqSOuOWEUP_31_YyKr2vg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "974539451314-jp0tqscemhsvosnfu2sendbifgevv4dp.apps.googleusercontent.com",
+              "client_id": "1053215654359-o6q3ugigph85357rjrrjo2ntfk6j6bgt.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

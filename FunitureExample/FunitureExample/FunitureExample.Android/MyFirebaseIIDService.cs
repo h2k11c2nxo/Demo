@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Firebase;
 using Firebase.Iid;
 
 namespace NotificationSample.Droid
@@ -27,7 +28,7 @@ namespace NotificationSample.Droid
         }
         void SendRegistrationToServer(string token)
         {
-            // Add custom implementation, as needed.
+            // send this token to server
         }
     }
 }

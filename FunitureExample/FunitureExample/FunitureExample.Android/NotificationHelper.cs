@@ -13,7 +13,6 @@ namespace FunitureExample.Droid
         class NotificationHelper : INotification
         {
             private Context mContext;
-            private NotificationManager mNotificationManager;
             private NotificationCompat.Builder mBuilder;
             public static String NOTIFICATION_CHANNEL_ID = "10023";
 

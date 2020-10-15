@@ -11,10 +11,15 @@ using Firebase;
 using Firebase.Iid;
 using Firebase.Messaging;
 using Android.Util;
+using Android.Content;
+using FunitureExample.Pages;
+using FunitureExample.Models;
+using FunitureExample.Data;
+using Java.Lang;
 
 namespace FunitureExample.Droid
 {
-    [Activity(Label = "FunitureExample", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(Label = "FunitureExample", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         static readonly string TAG = "MainActivity";
@@ -37,9 +42,44 @@ namespace FunitureExample.Droid
 
             var refreshedToken = FirebaseInstanceId.Instance.Token;
             System.Diagnostics.Debug.WriteLine($"FCM Token: {refreshedToken}");
-            IsPlayServicesAvailable();
-
+            Intent i = new Intent(this, typeof(MainActivity));
+            OnNewIntent(i);
         }
+
+
+        protected override void OnNewIntent(Intent intent)
+        {
+
+            //base.OnNewIntent(intent);
+            //    int userMedId =intent.GetIntExtra("id",0);
+            //if (userMedId != 0)
+            //{
+            //    Product product = new Product();
+            //    product = GetData.GetProductByName(userMedId);
+            //    var action = intent.Action;
+            //    App.Current.MainPage.Navigation.PushAsync(new DetailPage(product));
+            //}
+
+            if (intent != null)
+            {
+                string NotificationId = Intent.GetStringExtra("notificationId");
+                if (NotificationId != null)
+                {
+                    int userMedId = Convert.ToInt32( intent.GetStringExtra("id"));
+                    //App.IsNotified = true;
+                    //App.NotifiedId = NotificationId;
+
+                    //Page currentPage = App.Current.MainPage.Navigation.NavigationStack.LastOrDefault();
+                    //var content = currentPage.FindByName<ContentView>("cvContentPlaceHolder");
+                    //var notificationsSegmentedBarPage = new NotificationsSegmentedBarPage(Convert.ToInt32(App.NotifiedId));
+                    //content.Content = notificationsSegmentedBarPage.Content;
+                }
+            }
+        }
+
+
+
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -47,32 +87,7 @@ namespace FunitureExample.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        public bool IsPlayServicesAvailable()
-        {
-            int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
-            if (resultCode != ConnectionResult.Success)
-            {
-
-                if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
-                {
-                    //msgText.Text = GoogleApiAvailability.Instance.GetErrorString(resultCode);
-                }
-
-                else
-                {
-                    // msgText.Text = "This device is not supported";
-                    Finish();
-                }
-                return false;
-            }
-            else
-            {
-                // do whatever if play service is not available
-                //msgText.Text = "Google Play Services is available.";
-                return true;
-            }
-        }
-
+        
 
     }
 }

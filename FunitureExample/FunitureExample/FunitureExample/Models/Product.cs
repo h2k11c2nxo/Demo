@@ -6,6 +6,7 @@ namespace FunitureExample.Models
 {
     public class Product : BaseModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public double Rating { get; set; }
         public int Review { get; set; }

@@ -43,9 +43,9 @@ namespace FunitureExample.ViewModels
             GetCategories();
             GetProducts();
             GetMenu();
-            NavigateToDetailPageCommand = new Command<Product>(async (product) => await ExeccuteNavigateToDetailPageCommand(product));
+            NavigateToDetailPageCommand = new Command<Product>(async (product) => await ExeccuteNavigateToDetailPageCommandProduct(product.Id));
         }
-        
+
         void GetMenu()
         {
             Menus = new ObservableCollection<MenuTitle>(GetData.GetMenus());
@@ -73,7 +73,7 @@ namespace FunitureExample.ViewModels
         {
             var index = Categories.ToList().FindIndex(p => p.Name == category.Name);
 
-            if(index > -1)
+            if (index > -1)
             {
                 UnselectedGroupItem();
                 Categories[index].Selected = true;
@@ -97,6 +97,13 @@ namespace FunitureExample.ViewModels
 
         private async Task ExeccuteNavigateToDetailPageCommand(Product product)
         {
+            await App.Current.MainPage.Navigation.PushAsync(new DetailPage(product));
+        }
+
+        private async Task ExeccuteNavigateToDetailPageCommandProduct(int id)
+        {
+            Product product = new Product();
+            product = GetData.GetProductByName(id);
             await App.Current.MainPage.Navigation.PushAsync(new DetailPage(product));
         }
     }

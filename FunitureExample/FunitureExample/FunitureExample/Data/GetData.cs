@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Xamarin.Forms;
@@ -65,6 +66,14 @@ namespace FunitureExample.Data
 
         }
 
+        public static Product GetProductByName(int id)
+        {
+            Product item = new Product();
+            item = Productss.FirstOrDefault(product => product.Id == id);
+            return item;
+
+        }
+
 
         public static ObservableCollection<Product> GetProducts()
         {
@@ -72,6 +81,7 @@ namespace FunitureExample.Data
             {
               new Product()
                 {
+                  Id=1,
                     Name = "Chairs",
                     Rating = 5.5,
                    Review = 463,
@@ -92,6 +102,7 @@ namespace FunitureExample.Data
                 },
                  new Product()
                 {
+                     Id=2,
                     Name = "Chairs",
                     Rating = 5.5,
                    Review = 463,
@@ -113,6 +124,7 @@ namespace FunitureExample.Data
                 },
                   new Product()
                 {
+                      Id=3,
                      Name = "Chairs",
                     Rating = 5.5,
                    Review = 463,
@@ -135,6 +147,7 @@ namespace FunitureExample.Data
                 },
                     new Product()
                 {
+                        Id=4,
                      Name = "Chairs",
                     Rating = 5.5,
                    Review = 463,
@@ -156,6 +169,7 @@ namespace FunitureExample.Data
                 },
                         new Product()
                 {
+                            Id=5,
                      Name = "Chairs",
                     Rating = 5.5,
                    Review = 463,
@@ -177,6 +191,7 @@ namespace FunitureExample.Data
                 },
                                   new Product()
                 {
+                                      Id=6,
                      Name = "Chairs",
                     Rating = 5.5,
                    Review = 463,
